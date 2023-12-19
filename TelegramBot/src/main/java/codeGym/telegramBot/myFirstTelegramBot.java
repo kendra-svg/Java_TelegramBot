@@ -11,7 +11,7 @@ public class myFirstTelegramBot extends multiSessionTelegramBot {
 
     public static final String NAME = "kendrasvgBottie_Bot";
 
-    public static final String TOKEN = "6887330894:AAHh3QblVwZY2F3A3CFC3wGfuh5gANSrykM";
+    public static final String TOKEN = "";
 
     public myFirstTelegramBot() {
         super(NAME, TOKEN);
@@ -20,9 +20,17 @@ public class myFirstTelegramBot extends multiSessionTelegramBot {
     @Override
     public void onUpdateEventReceived(Update update) {
 
+        if (getMessageText().equals("/start")) {
+            sendTextMessageAsync("Hola _futura_ *programadora*! ");
+        }
 
-        //Aca va la funcionalidad principal del bot
-        sendTextMessageAsync("Hola futura programadora Kendra!");
+        if (getMessageText().contains("hola") || getMessageText().contains("Hola")) {
+            sendTextMessageAsync("Cual es tu nombre?");
+        }
+
+        if (getMessageText().contains("me llamo") || (getMessageText().contains("Me llamo"))) {
+            sendTextMessageAsync("Encantado de conocerte, soy *Gato*");
+        }
     }
 
     public static void main(String[] args) throws TelegramApiException {
